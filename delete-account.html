@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Delete Your Account &amp; Data — Flexx AI</title>
+<style>
+  :root {
+    --bg: #FBF6F0;
+    --bg-alt: #FDF8F3;
+    --card: #FFFFFF;
+    --ink: #1A1A1A;
+    --ink-soft: #5B5750;
+    --muted: #8A857D;
+    --line: #E8E6E1;
+    --purple: #7C3AED;
+    --purple-soft: #EDE9FE;
+    --danger: #E4483B;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  .page {
+    font-family: var(--font);
+    color: var(--ink);
+    background:
+      radial-gradient(1200px 500px at 50% -300px, #F3EDFE 0%, rgba(243,237,254,0) 70%),
+      var(--bg);
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 56px 24px 80px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 800; letter-spacing: 1.6px;
+    text-transform: uppercase; color: var(--purple);
+    background: var(--purple-soft); padding: 7px 12px; border-radius: 100px;
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--purple); }
+  h1 {
+    font-size: clamp(30px, 6vw, 42px); font-weight: 800; letter-spacing: -0.9px;
+    line-height: 1.1; margin: 20px 0 12px; text-wrap: balance;
+  }
+  .lede { font-size: 17px; color: var(--ink-soft); margin: 0; max-width: 60ch; }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 22px;
+    font-size: 13.5px; color: var(--muted);
+  }
+  .meta b { color: var(--ink); font-weight: 700; }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 20px; padding: 28px; margin-top: 20px;
+    box-shadow: 0 1px 2px rgba(20,16,10,0.03), 0 12px 32px -20px rgba(20,16,10,0.10);
+  }
+  .card h2 {
+    font-size: 19px; font-weight: 800; letter-spacing: -0.3px;
+    margin: 0 0 4px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 11px; font-weight: 800; letter-spacing: 0.4px; text-transform: uppercase;
+    color: var(--purple); background: var(--purple-soft); padding: 4px 9px; border-radius: 7px;
+  }
+  .tag.fast { color: #0E7C5A; background: #DFF3EC; }
+  .card p.sub { margin: 0 0 18px; color: var(--ink-soft); font-size: 14.5px; }
+  ol.steps { list-style: none; counter-reset: s; margin: 0; padding: 0; }
+  ol.steps li { counter-increment: s; position: relative; padding: 0 0 18px 46px; min-height: 30px; }
+  ol.steps li:last-child { padding-bottom: 0; }
+  ol.steps li::before {
+    content: counter(s); position: absolute; left: 0; top: -2px;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--purple); color: #fff; font-size: 14px; font-weight: 800;
+    display: grid; place-items: center;
+  }
+  ol.steps li::after {
+    content: ""; position: absolute; left: 14.5px; top: 30px; bottom: 6px;
+    width: 1.5px; background: var(--line);
+  }
+  ol.steps li:last-child::after { display: none; }
+  .path { font-weight: 700; color: var(--ink); }
+  .email-box {
+    background: var(--bg-alt); border: 1px solid var(--line);
+    border-radius: 12px; padding: 14px 16px; margin-top: 6px; font-size: 14.5px;
+  }
+  .email-box a { color: var(--purple); font-weight: 700; text-decoration: none; }
+  .email-box a:hover { text-decoration: underline; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+  @media (max-width: 560px) { .grid2 { grid-template-columns: 1fr; } }
+  .panel { border-radius: 16px; padding: 22px; border: 1px solid var(--line); background: var(--card); }
+  .panel.del { border-color: #F1D9D6; background: linear-gradient(180deg, #FEF7F6, var(--card) 60%); }
+  .panel h3 {
+    font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+    margin: 0 0 14px; display: flex; align-items: center; gap: 8px;
+  }
+  .panel.del h3 { color: var(--danger); }
+  .panel.keep h3 { color: var(--ink-soft); }
+  ul.list { list-style: none; margin: 0; padding: 0; }
+  ul.list li {
+    font-size: 14px; color: var(--ink-soft);
+    padding: 7px 0 7px 24px; position: relative; border-top: 1px solid var(--line);
+  }
+  ul.list li:first-child { border-top: none; }
+  ul.list li::before { position: absolute; left: 0; top: 7px; font-size: 13px; font-weight: 800; }
+  .panel.del ul.list li::before { content: "\00d7"; color: var(--danger); font-size: 16px; top: 5px; }
+  .panel.keep ul.list li::before { content: "\2022"; color: var(--muted); }
+  .note {
+    margin-top: 20px; font-size: 13.5px; color: var(--muted);
+    border-top: 1px solid var(--line); padding-top: 18px;
+  }
+  footer {
+    margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line);
+    font-size: 13px; color: var(--muted);
+    display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center;
+  }
+  footer b { color: var(--ink); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span>Flexx AI</span>
+    <h1>Delete your account &amp; data</h1>
+    <p class="lede">This page explains how to permanently delete your <b>Flexx AI</b> account and every piece of data linked to it. There are two ways &mdash; choose whichever suits you.</p>
+    <div class="meta">
+      <span>App: <b>Flexx AI: AI Personal Trainer</b></span>
+      <span>Developer: <b>Flexx AI</b></span>
+    </div>
+
+    <div class="card">
+      <h2>Delete in the app <span class="tag fast">Fastest &middot; Instant</span></h2>
+      <p class="sub">If you can still sign in, this removes everything immediately &mdash; no waiting.</p>
+      <ol class="steps">
+        <li>Open the <b>Flexx AI</b> app and sign in to your account.</li>
+        <li>Go to <span class="path">Profile &rarr; Account Settings</span>.</li>
+        <li>Scroll to <span class="path">Danger Zone</span> and tap <span class="path">Delete Account</span>.</li>
+        <li>Confirm. Your account and all associated data are <b>erased immediately and permanently</b>.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Request by email <span class="tag">If you can't sign in</span></h2>
+      <p class="sub">Lost access to your account? Send us a request and we'll delete it for you.</p>
+      <div class="email-box">
+        Email <a href="mailto:flexxaiapp@gmail.com?subject=Delete%20my%20account">flexxaiapp@gmail.com</a>
+        from the email address on your account, with the subject <b>"Delete my account"</b>.
+        We verify the request and complete deletion <b>within 30 days</b>.
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel del">
+        <h3>Permanently deleted</h3>
+        <ul class="list">
+          <li>Account &amp; login credentials (email, password)</li>
+          <li>Profile &amp; personal info (name, age, gender, measurements, goals)</li>
+          <li>Workouts, plans &amp; exercise logs</li>
+          <li>Nutrition &amp; food logs, meal history</li>
+          <li>Meal photos &amp; progress photos</li>
+          <li>AI coach conversations</li>
+          <li>Health &amp; fitness data (weight history, steps, activity)</li>
+        </ul>
+      </div>
+      <div class="panel keep">
+        <h3>Kept briefly, then removed</h3>
+        <ul class="list">
+          <li>Purchase &amp; transaction records we're legally required to retain for tax and accounting &mdash; kept only for the period the law requires, then deleted.</li>
+          <li>Anonymized, aggregated data that can no longer identify you.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="note"><b>Retention:</b> In-app deletion is immediate. Email requests are completed within 30 days. Legally required transaction records are the only exception and are deleted as soon as the mandatory retention period ends.</p>
+
+    <footer>
+      <span>&copy; Flexx AI</span>
+      <span>Developer: <b>Flexx AI</b></span>
+      <span>Contact: <b>flexxaiapp@gmail.com</b></span>
+    </footer>
+  </div>
+</div>
+</body>
+</html>
