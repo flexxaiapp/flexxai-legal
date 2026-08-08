@@ -136,7 +136,7 @@
 
   <div class="brand">Flexx AI</div>
   <h1>Privacy Policy</h1>
-  <p class="effective-date">Effective Date: April 16, 2026 &nbsp;|&nbsp; Last Updated: April 16, 2026</p>
+  <p class="effective-date">Effective Date: April 16, 2026 &nbsp;|&nbsp; Last Updated: August 7, 2026</p>
 
   <div class="summary-box">
     <strong>Quick Summary:</strong> Flexx AI is a fitness and nutrition app. We collect only the data needed to provide personalized fitness and nutrition guidance. Your data is stored on secure EU servers (Frankfurt, Germany). We never sell your data. We do not serve ads. You can delete your account and all associated data at any time.
@@ -195,7 +195,6 @@
   <h3>2.6 Photos</h3>
   <ul>
     <li><strong>Progress photos</strong> — body photos you upload to track physical changes over time</li>
-    <li><strong>Body transformation photos</strong> — photos submitted for AI-powered body prediction features</li>
     <li><strong>Meal photos</strong> — food images submitted for AI calorie analysis</li>
   </ul>
   <p>Photos are stored in our secure database (Supabase Storage, EU). Meal and body photos are temporarily processed by our AI providers (see Section 4) and are not retained by those providers after processing.</p>
@@ -233,7 +232,7 @@
         <td>Meal photos, food logs</td>
       </tr>
       <tr>
-        <td>AI-powered body transformation predictions</td>
+        <td>AI-powered progress insights and coaching</td>
         <td>Body photos, body data</td>
       </tr>
       <tr>
@@ -282,15 +281,27 @@
       </tr>
       <tr>
         <td><strong>OpenAI</strong></td>
-        <td>AI meal analysis, AI coaching, body predictions</td>
-        <td>Meal photos, body photos, profile context, chat messages</td>
+        <td>AI meal analysis, AI coaching, voice transcription (Whisper)</td>
+        <td>Meal photos, profile context, chat messages, voice recordings</td>
         <td>Not retained (API data usage policy: data sent via API is not used for training and is not stored beyond processing)</td>
       </tr>
       <tr>
-        <td><strong>Stability AI</strong></td>
-        <td>Body transformation image generation</td>
-        <td>Body photos (processed only)</td>
-        <td>Not retained after processing</td>
+        <td><strong>Tavily</strong></td>
+        <td>Web search used by Coach Flexx to answer questions needing current information</td>
+        <td>The search query derived from your question (no profile or health data)</td>
+        <td>Per Tavily's privacy policy</td>
+      </tr>
+      <tr>
+        <td><strong>Google Firebase Cloud Messaging</strong></td>
+        <td>Delivery of push notifications (reminders, coach follow-ups)</td>
+        <td>Device push token</td>
+        <td>Until you sign out, disable notifications, or delete your account</td>
+      </tr>
+      <tr>
+        <td><strong>USDA FoodData Central</strong></td>
+        <td>Public nutrition database lookups for food search and barcode scanning</td>
+        <td>The food name or barcode searched (no account identifiers)</td>
+        <td>Not retained — public reference lookup</td>
       </tr>
       <tr>
         <td><strong>RevenueCat</strong></td>
@@ -359,7 +370,7 @@
     <li><strong>Active account:</strong> Your data is retained for as long as your account is active.</li>
     <li><strong>Account deletion:</strong> When you delete your account, all data is permanently deleted from all database tables (30+ tables), all stored photos are removed, and your authentication record is erased. This process is irreversible.</li>
     <li><strong>Crash reports:</strong> Anonymous crash data in Sentry is retained for 90 days.</li>
-    <li><strong>AI processing:</strong> Data sent to OpenAI and Stability AI for processing is not retained by those providers after the request is completed.</li>
+    <li><strong>AI processing:</strong> Data sent to OpenAI or Tavily for processing is not retained by those providers after the request is completed.</li>
     <li><strong>Subscription records:</strong> RevenueCat may retain purchase event data per their own retention policy, but this data does not include personal health or fitness information.</li>
   </ul>
 
@@ -401,7 +412,7 @@
   <ul>
     <li><strong>Legal basis for processing:</strong> We process your data based on (a) your consent (health data, AI features), (b) contractual necessity (account creation, service delivery), and (c) legitimate interest (crash reporting, app improvement).</li>
     <li><strong>Data location:</strong> All primary data is stored in the EU (Frankfurt, Germany).</li>
-    <li><strong>International transfers:</strong> When data is processed by OpenAI, Stability AI, or RevenueCat (US-based services), these transfers are conducted under Standard Contractual Clauses (SCCs) or equivalent safeguards as required by GDPR.</li>
+    <li><strong>International transfers:</strong> When data is processed by OpenAI, Tavily, Google, or RevenueCat (US-based services), these transfers are conducted under Standard Contractual Clauses (SCCs) or equivalent safeguards as required by GDPR.</li>
     <li><strong>Data Protection Officer:</strong> As a solo-developer operation, we do not have a formal DPO but respond to all data protection inquiries at <a href="mailto:flexxaiapp@gmail.com">flexxaiapp@gmail.com</a>.</li>
   </ul>
 
